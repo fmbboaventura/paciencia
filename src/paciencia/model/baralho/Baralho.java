@@ -5,6 +5,7 @@
  */
 package paciencia.model.baralho;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import paciencia.model.baralho.Carta.Naipe;
@@ -22,6 +23,8 @@ public class Baralho {
      * @param count - Numero de baralhos (52 cartas/baralho})
      */
     public Baralho(int count) {
+        if (count < 1) 
+            throw new IllegalArgumentException("count deve ser maior que 0!!");
         this.cartas = new LinkedList<>();
         Naipe n = Naipe.COPAS;
         
@@ -43,5 +46,13 @@ public class Baralho {
     
     public Carta proximaCarta() {
         return this.cartas.iterator().next();
+    }
+    
+    public boolean temProximaCarta() {
+        return this.cartas.iterator().hasNext();
+    }
+    
+    public void embaralhar() {
+        Collections.shuffle(this.cartas);
     }
 }
