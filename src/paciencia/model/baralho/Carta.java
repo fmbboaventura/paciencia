@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paciencia.model;
+package paciencia.model.baralho;
 
 /**
  *
@@ -13,6 +13,11 @@ public class Carta implements Comparable {
     
     private int valor;
     private Naipe naipe;
+
+    protected Carta(int valor, Naipe naipe) {
+        this.valor = valor;
+        this.naipe = naipe;
+    }
     
     public boolean compararCor(Carta c) {
         return this.naipe.ehVermelho() == c.naipe.ehVermelho();
@@ -28,6 +33,17 @@ public class Carta implements Comparable {
         return (this.valor < c.valor) ? -1:
                 (this.valor > c.valor) ? 1: 0;
     }
+
+    @Override
+    public String toString() {
+        String nome = (valor == 11) ? "Valete":
+                      (valor == 12) ? "Dama"  :
+                      (valor == 13) ? "Rei"   :
+                      "" + valor;
+        return nome + " de " + naipe.name();
+    }
+    
+    
     
     public enum Naipe {
         COPAS, OURO, PAUS, ESPADA;

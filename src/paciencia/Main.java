@@ -5,6 +5,10 @@
  */
 package paciencia;
 
+import paciencia.model.baralho.Baralho;
+import paciencia.model.baralho.Carta;
+import paciencia.model.baralho.Carta.Naipe;
+
 /**
  *
  * @author aluno
@@ -15,7 +19,11 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Baralho b = new Baralho(2);
+        System.out.println(b.cartas.size());
+        for (Carta carta : b.cartas) {
+            System.out.println(carta.toString());
+        }
     }
     
 }
