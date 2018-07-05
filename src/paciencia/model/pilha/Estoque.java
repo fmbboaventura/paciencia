@@ -53,5 +53,9 @@ public class Estoque {
         return this.descarte.pop();
     }
     
+    public Carta peek() {
+        return this.descarte.peek();
+    }
+    
     // TODO: MÉTODO PARA VISUALIZAR AS CARTAS NO TOPO
 }

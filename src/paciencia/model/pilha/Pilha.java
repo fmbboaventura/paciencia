@@ -12,12 +12,15 @@ public class Pilha {
 
     protected PilhaNo fim;
     
-    public Pilha(Verificador vazio, Verificador padrao) {
-        this.verificadorPadrao = padrao;
-        this.verificadorVazio = vazio;
-        
+    public Pilha() {
         this.inicio = null;
         this.fim = null;
+    }
+    
+    public Pilha(Verificador vazio, Verificador padrao) {
+        this();
+        this.verificadorPadrao = padrao;
+        this.verificadorVazio = vazio;
     }
 
     public boolean vazio() {
