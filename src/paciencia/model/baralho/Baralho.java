@@ -6,6 +6,7 @@
 package paciencia.model.baralho;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import paciencia.model.baralho.Carta.Naipe;
@@ -17,6 +18,7 @@ import paciencia.model.baralho.Carta.Naipe;
 public class Baralho {
     
     public List<Carta> cartas;
+    private Iterator<Carta> iterator;
     
     /**
      *
@@ -38,6 +40,7 @@ public class Baralho {
         for (int i = 0; i < count-1; i++) {
             this.cartas.addAll(this.cartas);
         }
+        this.iterator = this.cartas.iterator();
     }
     
     public Baralho() {
@@ -45,11 +48,11 @@ public class Baralho {
     }
     
     public Carta proximaCarta() {
-        return this.cartas.iterator().next();
+        return this.iterator.next();
     }
     
     public boolean temProximaCarta() {
-        return this.cartas.iterator().hasNext();
+        return this.iterator.hasNext();
     }
     
     public void embaralhar() {
