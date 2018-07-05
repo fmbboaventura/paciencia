@@ -1,4 +1,6 @@
-package paciencia.model.baralho;
+package paciencia.model.pilha;
+
+import paciencia.model.baralho.Carta;
 
 public class VerificadorVazioFundacao implements Verificador {
 

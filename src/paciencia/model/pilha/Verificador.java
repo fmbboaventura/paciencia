@@ -1,7 +1,9 @@
-package paciencia.model.baralho;
+package paciencia.model.pilha;
+
+import paciencia.model.baralho.Carta;
 
 public interface Verificador {
 
-	public boolean verificar(Carta carta1, Carta carta2);
+    public boolean verificar(Carta carta1, Carta carta2);
 
 }

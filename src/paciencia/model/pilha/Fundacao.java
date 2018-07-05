@@ -1,46 +1,32 @@
-package paciencia.model.baralho;
+package paciencia.model.pilha;
 
 import java.util.Stack;
+import paciencia.model.baralho.Carta;
 
-public class Fundacao implements Pilha {
-	
-	private Stack<Carta> pilha;
-	private FileiraNo inicio, fim;
-	private Verificador padrao, vazio;
-	
-	public Fundacao(){
-		this.pilha = new Stack<Carta>();
-	}
+public class Fundacao extends Pilha {
 
-	@Override
-	public boolean vazio() {
-		if(this.pilha.isEmpty())
-			return true;
-		else
-			return false;
-	}
+    private final Stack<Carta> pilha;
 
-	@Override
-	public Carta getCarta() {
-		return this.pilha.pop();
-	}
+    public Fundacao(Verificador vazio, Verificador padrao) {
+        this.pilha = new Stack<>();
+        this.verificadorPadrao = padrao;
+        this.verificadorVazio = vazio;
+    }
 
-	@Override
-	public boolean addCarta(Carta novaCarta) {
-		if(vazio.verificar(novaCarta, this.pilha.peek())){
-			this.pilha.push(novaCarta);
-			return true;
-		} else if (padrao.verificar(novaCarta, this.pilha.peek())){
-			this.pilha.push(novaCarta);
-			return true;
-		}else
-			return false;
-	}
+    @Override
+    public boolean vazio() {
+        return this.pilha.isEmpty();
+    }
 
-	@Override
-	public boolean put() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public Carta getCarta() {
+        return this.pilha.pop();
+    }
+
+    @Override
+    protected boolean put(Carta c) {
+        Carta push = this.pilha.push(c);
+        return c.equals(push);
+    }
 
 }
