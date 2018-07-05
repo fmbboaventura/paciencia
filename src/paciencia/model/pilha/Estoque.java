@@ -5,6 +5,7 @@
  */
 package paciencia.model.pilha;
 
+import java.util.Iterator;
 import java.util.Stack;
 import paciencia.model.baralho.Baralho;
 import paciencia.model.baralho.Carta;
@@ -18,8 +19,8 @@ public class Estoque {
     private final int cartasAVirar;
     private final int numCartas;
     
-    private Stack<Carta> estoque;
-    private Stack<Carta> descarte;
+    private final Stack<Carta> estoque;
+    private final Stack<Carta> descarte;
     
     public Estoque(Baralho b, int cartasAVirar, int numCartas) {
         this.cartasAVirar = cartasAVirar;
@@ -55,6 +56,29 @@ public class Estoque {
     
     public Carta peek() {
         return this.descarte.peek();
+    }
+    
+    @Override
+    public String toString() {
+        String res = "";
+        
+        res = estoque.stream().map((_item) -> "[").reduce(res, String::concat);
+        res += (res.equals("")) ? res : " <> ]";
+        
+        res = "ESTOQUE: " + res;
+        
+        String res2 = "";
+        Iterator<Carta> it = descarte.iterator();
+        for (int i = 0; i < descarte.size() - cartasAVirar; i++) {
+            res2 += "[";
+            it.next();
+        }
+        
+        while (it.hasNext()) res2 += it.next().toString();
+        
+        res2 = "DESCARTE: " + res2;
+        
+        return res + "\n" + res2;
     }
     
     // TODO: MÉTODO PARA VISUALIZAR AS CARTAS NO TOPO

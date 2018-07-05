@@ -5,8 +5,10 @@
  */
 package paciencia;
 
+import java.util.Stack;
 import paciencia.model.baralho.Baralho;
 import paciencia.model.baralho.Carta;
+import paciencia.model.pilha.Estoque;
 
 /**
  *
@@ -19,15 +21,18 @@ public class Main {
      */
     public static void main(String[] args) {
         Baralho b = new Baralho(1);
-        System.out.println(b.cartas.size());
-        for (Carta carta : b.cartas) {
-            System.out.println(carta.toString());
-        }
         
         b.embaralhar();
         for (Carta carta : b.cartas) {
             System.out.println(carta.toString());
         }
+        
+        Estoque e = new Estoque(b, 3, 24);
+        
+        System.out.println(e.toString());
+        e.virarCarta();
+        e.virarCarta();
+        System.out.println(e.toString());
     }
     
 }
