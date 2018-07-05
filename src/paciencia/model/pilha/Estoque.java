@@ -34,13 +34,19 @@ public class Estoque {
     }
     
     public void virarCarta() {
-        for (int i = 0; i < this.cartasAVirar; i++) 
-            this.descarte.push(this.estoque.pop());
+        for (int i = 0; i < this.cartasAVirar; i++) {
+            Carta pop = this.estoque.pop();
+            pop.setViradaParaCima(true);
+            this.descarte.push(pop);
+        }
     }
     
     public void reempilhar() {
-        while(!this.descarte.isEmpty())
-            this.estoque.push(this.descarte.pop());
+        while(!this.descarte.isEmpty()){
+            Carta pop = this.descarte.pop();
+            pop.setViradaParaCima(false);
+            this.estoque.push(pop);
+        }
     }
     
     public Carta getCarta() {

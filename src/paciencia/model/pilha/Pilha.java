@@ -11,6 +11,14 @@ public class Pilha {
     protected PilhaNo inicio;
 
     protected PilhaNo fim;
+    
+    public Pilha(Verificador vazio, Verificador padrao) {
+        this.verificadorPadrao = padrao;
+        this.verificadorVazio = vazio;
+        
+        this.inicio = null;
+        this.fim = null;
+    }
 
     public boolean vazio() {
         return this.inicio == null;
@@ -49,6 +57,7 @@ public class Pilha {
             no.anterior = this.fim;
             this.fim = seqDeCartas.fim;
             seqDeCartas.fim = anterior.anterior;
+            seqDeCartas.fim.getCarta().setViradaParaCima(true);
             return true;
         } else {
             return false;
