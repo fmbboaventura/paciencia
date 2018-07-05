@@ -31,6 +31,7 @@ public class Paciencia {
     public Paciencia(int cartasAvirar) {
         this.numBaralhos = 1;
         this.baralho = new Baralho(numBaralhos);
+        this.baralho.embaralhar();
         this.estoque = new Estoque(baralho, cartasAvirar, 24);
         this.pilhas = new LinkedList<>();
         
