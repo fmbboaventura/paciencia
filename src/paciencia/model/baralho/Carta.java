@@ -60,11 +60,13 @@ public class Carta implements Comparable {
 
     @Override
     public String toString() {
-        String nome = (valor == 11) ? "Valete":
-                      (valor == 12) ? "Dama"  :
-                      (valor == 13) ? "Rei"   :
-                      "" + valor;
-        return nome + " de " + naipe.name();
+        String nome = (valor == 11) ? " J":
+                      (valor == 12) ? " Q":
+                      (valor == 13) ? " K":
+                      (valor == 10) ? "10":
+                      (valor ==  1) ? " A":
+                      " " + valor;
+        return "[" + nome + " " + naipe.naipeString() + "]";
     }
 
     @Override
@@ -96,6 +98,17 @@ public class Carta implements Comparable {
         
         public boolean ehVermelho() {
             return ehVermelho;
+        }
+        
+        public String naipeString() {
+            String res = "";
+            switch (this) {
+                case COPAS: res = "♥"; break;
+                case ESPADA: res = "♠"; break;
+                case OURO: res = "♦"; break;
+                case PAUS: res = "♣"; break;
+            }
+            return res;
         }
         
         public Naipe proximo() {
