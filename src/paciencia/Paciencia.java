@@ -55,6 +55,7 @@ public class Paciencia {
                 p.addCarta(proximaCarta);
             }
             proximaCarta.setViradaParaCima(true);
+            this.pilhas.add(p);
         }
     }
     
@@ -75,5 +76,20 @@ public class Paciencia {
             
             destino.moverCarta(origem, carta);
         }
+    }
+    
+    @Override
+    public String toString() {
+        String res = estoque.toString() + "\n";
+        
+        for (int i = 0; i < 4; i++) {
+            res += (i+1) + " - FUNDACAO: " + this.pilhas.get(i).toString() + "\n";
+        }
+        
+        for (int i = 4; i < this.pilhas.size(); i++) {
+            res += (i+1) + " - FILEIRA: " + this.pilhas.get(i).toString() + "\n";
+        }
+        
+        return res;
     }
 }

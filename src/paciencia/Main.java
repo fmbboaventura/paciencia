@@ -20,19 +20,21 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Baralho b = new Baralho(1);
+//        Baralho b = new Baralho(1);
+//        
+//        b.embaralhar();
+//        for (Carta carta : b.cartas) {
+//            System.out.println(carta.toString());
+//        }
+//        
+//        Estoque e = new Estoque(b, 3, 24);
+//        
+//        System.out.println(e.toString());
+//        e.virarCarta();
+//        e.virarCarta();
+//        System.out.println(e.toString());
         
-        b.embaralhar();
-        for (Carta carta : b.cartas) {
-            System.out.println(carta.toString());
-        }
-        
-        Estoque e = new Estoque(b, 3, 24);
-        
-        System.out.println(e.toString());
-        e.virarCarta();
-        e.virarCarta();
-        System.out.println(e.toString());
+        System.out.println(new Paciencia(1).toString());
     }
     
 }
