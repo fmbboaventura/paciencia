@@ -1,36 +1,13 @@
 package paciencia.model.baralho;
 
-import java.util.Stack;
+public interface Pilha {
 
-public class Pilha {
+	public boolean vazio();
 	
-	private Verificador verificadorPadrao;
-	private Verificador verificadorVazio;
-	private Stack<Carta> pilha;
+	public Carta getCarta();
 	
-	public Pilha(){
-		this.pilha = new Stack<Carta>();
-	}
-
-	public boolean vazio(){
-		if(pilha.isEmpty())
-			return true;
-		else
-			return false;
-	}
+	public boolean addCarta(Carta novaCarta);
 	
-	public Carta getCarta(){
-		return this.pilha.pop();
-	}
-	
-	public void addCarta(Carta novaCarta){
-		if(this.put()){
-			this.pilha.push(novaCarta);
-		}
-	}
-	
-	public boolean put(){
-		return true;
-	}
+	public boolean put();
 	
 }
