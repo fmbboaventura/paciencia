@@ -92,25 +92,40 @@ public class Pilha {
             this.fim = this.fim.proximo;
         }
     }
+    
+    @Override
+    public String toString() {
+        if (vazio()) return "";
+        String res = "";
+        PilhaNo atual = this.inicio;
+        
+        while (atual != null) {
+            res += (atual.carta.isViradaParaCima())?
+                    atual.carta.toString(): "[";
+            atual = atual.proximo;
+        }
+        
+        return res;
+    }
 
     protected class PilhaNo {
 
-        protected Carta c;
+        protected Carta carta;
         protected PilhaNo proximo;
         protected PilhaNo anterior;
 
         public PilhaNo(Carta c) {
-            this.c = c;
+            this.carta = c;
             this.proximo = null;
             this.anterior = null;
         }
 
         public Carta getCarta() {
-            return c;
+            return carta;
         }
 
         public void setCarta(Carta c) {
-            this.c = c;
+            this.carta = c;
         }
 
         public PilhaNo getProximo() {
