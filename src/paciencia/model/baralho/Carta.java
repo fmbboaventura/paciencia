@@ -13,10 +13,29 @@ public class Carta implements Comparable {
     
     private final int valor;
     private final Naipe naipe;
+    
+    private boolean viradaParaCima;
 
     protected Carta(int valor, Naipe naipe) {
         this.valor = valor;
         this.naipe = naipe;
+        this.viradaParaCima = false;
+    }
+    
+    public int getValor() {
+        return valor;
+    }
+
+    public Naipe getNaipe() {
+        return naipe;
+    }
+
+    public boolean isViradaParaCima() {
+        return viradaParaCima;
+    }
+
+    public void setViradaParaCima(boolean viradaParaCima) {
+        this.viradaParaCima = viradaParaCima;
     }
     
     public boolean compararCor(Carta c) {

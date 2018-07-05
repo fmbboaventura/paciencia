@@ -4,16 +4,20 @@ import java.util.Stack;
 import paciencia.model.baralho.Baralho;
 import paciencia.model.baralho.Carta;
 
+/**
+ *
+ * @author Filipe Boaventura
+ * @deprecated Não usar
+ */
+@Deprecated
 public class Fileira extends Pilha {
 
     private final Stack<Carta> reserva;
-    private FileiraNo inicio;
-    private FileiraNo fim;
 
     public Fileira(Baralho b, int numCartas) {
         this.reserva = new Stack<>();
         
-        this.inicio = new FileiraNo(b.proximaCarta());
+        this.inicio = new PilhaNo(b.proximaCarta());
         this.fim = this.inicio;
         
         for (int i = 1; i < numCartas; i++)
@@ -31,16 +35,4 @@ public class Fileira extends Pilha {
         this.fim = this.fim.getAnterior();
         return null;
     }
-
-    @Override
-    public boolean addCarta(Carta novaCarta) {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
-    protected boolean put(Carta c) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

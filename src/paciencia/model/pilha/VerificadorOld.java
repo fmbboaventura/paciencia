@@ -2,7 +2,8 @@ package paciencia.model.pilha;
 
 import paciencia.model.baralho.Carta;
 
-public interface Verificador {
+@Deprecated
+public interface VerificadorOld {
 
     public boolean verificar(Carta carta1, Carta carta2);
 

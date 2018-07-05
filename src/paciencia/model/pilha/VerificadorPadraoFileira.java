@@ -1,18 +1,14 @@
 package paciencia.model.pilha;
 
-import paciencia.model.baralho.Carta;
+import paciencia.model.pilha.Pilha.Verificador;
 
-public class VerificadorPadraoFileira implements Verificador{
+public class VerificadorPadraoFileira extends Verificador{
 
-	@Override
-	public boolean verificar(Carta carta1, Carta carta2) {
-		/**
-		 * Recebe cartas na ordem crescente e do mesmo naipe.
-		 * if(carta1.compararCor(carta2) && carta1.getValor() - carta2.getValor() == 1)
-			return true
-		 */
-		
-		return false;
-	}
-
+    @Override
+    protected boolean verificar(Pilha.PilhaNo carta1, Pilha.PilhaNo carta2) {
+        return super.verificar(carta1, carta2) && 
+                !carta2.getCarta().compararCor(carta1.getCarta()) && // Tem cores opostas?
+                carta2.getCarta().getValor() < carta1.getCarta().getValor(); // Carta2 é menor?
+    }
+    
 }

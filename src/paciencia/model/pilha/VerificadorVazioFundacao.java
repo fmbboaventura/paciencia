@@ -1,17 +1,21 @@
 package paciencia.model.pilha;
 
-import paciencia.model.baralho.Carta;
+public class VerificadorVazioFundacao extends Pilha.Verificador{
 
-public class VerificadorVazioFundacao implements Verificador {
-
-	@Override
-	public boolean verificar(Carta carta1, Carta carta2) {
-		/**
-		 * if(carta2 == null && carta1.getValor() == 13)
-		 * 		return true
-		 * else
-		 */
-		return false;
-	}
-
+    /**
+     * Verifica a carta2 pode ser colocada no topo da carta1
+     * Uma fundação vazia só aceita reis de qualquer naipe.
+     * Qualquer outra carta retorna false.
+     *
+     * @param carta1
+     * @param carta2
+     * @return
+     */
+    @Override
+    protected boolean verificar(Pilha.PilhaNo carta1, Pilha.PilhaNo carta2) {
+        return super.verificar(carta1, carta2) 
+                && carta2.proximo == null && // Fundações recebem apenas uma carta
+                carta2.getCarta().getValor() == 1; // Fundações vazias recebem apenas Áses 
+    }
+    
 }

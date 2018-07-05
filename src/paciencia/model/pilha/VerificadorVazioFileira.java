@@ -1,18 +1,10 @@
 package paciencia.model.pilha;
 
-import paciencia.model.baralho.Carta;
+public class VerificadorVazioFileira extends Pilha.Verificador{
 
-public class VerificadorVazioFileira implements Verificador{
-
-	@Override
-	//recebe um A se estiver vazio
-		public boolean verificar(Carta carta1, Carta carta2) {
-			/**
-			 * if(carta2 == null && carta1.getValor() == 1)
-			 * 		return true
-			 * else
-			 */
-			return false;
-		}
-
+    @Override
+    protected boolean verificar(Pilha.PilhaNo carta1, Pilha.PilhaNo carta2) {
+        return super.verificar(carta1, carta2) && 
+                carta2.getCarta().getValor() == 13; // Fileiras vazias recebem apenas Rei 
+    }
 }

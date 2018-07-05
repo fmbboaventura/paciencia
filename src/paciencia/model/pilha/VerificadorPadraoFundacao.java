@@ -1,17 +1,13 @@
 package paciencia.model.pilha;
 
-import paciencia.model.baralho.Carta;
+public class VerificadorPadraoFundacao extends Pilha.Verificador{
 
-public class VerificadorPadraoFundacao {
-	
-	public boolean verificar(Carta carta1, Carta carta2) {
-		/**
-		 * Aceita cartas na ordem decrescente e da cor oposta
-		 * if(!carta1.compararCor(carta2) && carta2.getValor() - carta1.getValor() == 1)
-			return true
-		 */
-		
-		return false;
-	}
-
+    @Override
+    protected boolean verificar(Pilha.PilhaNo carta1, Pilha.PilhaNo carta2) {
+        return super.verificar(carta1, carta2) && 
+                carta2.proximo == null && // Fundações recebem apenas uma carta
+                !carta2.getCarta().compararCor(carta1.getCarta()) && // Tem cores opostas?
+                carta2.getCarta().getValor() < carta1.getCarta().getValor(); // Carta2 é menor?
+    }
+    
 }
