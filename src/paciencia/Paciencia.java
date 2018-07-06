@@ -69,12 +69,12 @@ public class Paciencia {
         if (orig ==  0) {
             if (this.estoque.descarteVazio())
                 throw new IllegalArgumentException("Pilha de Origem Vazia!!!");
-            
+            dest--;
             Carta c = this.estoque.peek();
             Pilha temp = new Pilha();
             temp.addCarta(c);
             
-            boolean moveu = pilhas.get(dest--).moverCarta(temp, 0);
+            boolean moveu = pilhas.get(dest).moverCarta(temp, 0);
             if (moveu) this.estoque.getCarta();
             return moveu;
         } else {
