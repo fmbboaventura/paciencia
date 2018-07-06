@@ -8,7 +8,7 @@ public class VerificadorPadraoFileira extends Verificador{
     protected boolean verificar(Pilha.PilhaNo carta1, Pilha.PilhaNo carta2) {
         return super.verificar(carta1, carta2) && 
                 !carta2.getCarta().compararCor(carta1.getCarta()) && // Tem cores opostas?
-                carta2.getCarta().getValor() < carta1.getCarta().getValor(); // Carta2 é menor?
+                carta2.getCarta().getValor() == carta1.getCarta().getValor()-1; // Carta2 é menor?
     }
     
 }
