@@ -81,5 +81,9 @@ public class Estoque {
         return res + "\n" + res2;
     }
     
+    public boolean estoqueVazio() {
+        return this.estoque.isEmpty();
+    }
+    
     // TODO: MÉTODO PARA VISUALIZAR AS CARTAS NO TOPO
 }

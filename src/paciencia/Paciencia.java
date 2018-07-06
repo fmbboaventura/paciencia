@@ -92,4 +92,16 @@ public class Paciencia {
         
         return res;
     }
+
+    void virarCarta() {
+        estoque.virarCarta();
+    }
+    
+    boolean estoqueVazio() {
+        return estoque.estoqueVazio();
+    }
+
+    void reempilharEstoque() {
+        estoque.reempilhar();
+    }
 }
