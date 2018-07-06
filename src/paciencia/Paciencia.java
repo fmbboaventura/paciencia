@@ -59,22 +59,34 @@ public class Paciencia {
         }
     }
     
-    public void moverCarta(int orig, int dest, int carta) {
+    public boolean moverCarta(int orig, int dest, int carta) {
         if (dest == 0) 
             throw new IllegalArgumentException("Não pode mover pro descarte!");
         
+        if (orig == dest)
+            throw new IllegalArgumentException("origem e destino não podem ser iguais!!");
+        
         if (orig ==  0) {
+            if (this.estoque.descarteVazio())
+                throw new IllegalArgumentException("Pilha de Origem Vazia!!!");
+            
             Carta c = this.estoque.peek();
             Pilha temp = new Pilha();
             temp.addCarta(c);
             
-            boolean moveu = pilhas.get(dest).moverCarta(temp);
+            boolean moveu = pilhas.get(dest--).moverCarta(temp, 0);
             if (moveu) this.estoque.getCarta();
+            return moveu;
         } else {
+            orig--;
+            dest--;
             Pilha origem = this.pilhas.get(orig);
             Pilha destino = this.pilhas.get(dest);
             
-            destino.moverCarta(origem, carta);
+            if (origem.vazio())
+                throw new IllegalArgumentException("Pilha de Origem Vazia!!!");
+            
+            return destino.moverCarta(origem, (orig > 4) ?  carta: origem.tamanho()-1);
         }
     }
     
@@ -103,5 +115,9 @@ public class Paciencia {
 
     void reempilharEstoque() {
         estoque.reempilhar();
+    }
+
+    boolean moverCarta(int origem, int destino) {
+        return this.moverCarta(origem, destino, 0);
     }
 }

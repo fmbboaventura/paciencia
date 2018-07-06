@@ -6,10 +6,6 @@
 package paciencia;
 
 import java.util.Scanner;
-import java.util.Stack;
-import paciencia.model.baralho.Baralho;
-import paciencia.model.baralho.Carta;
-import paciencia.model.pilha.Estoque;
 
 /**
  *
@@ -56,7 +52,7 @@ public class Main {
     }
 
     private static void iniciarJogo() {
-        int opcao = 0;
+        int opcao;
         do {
             System.out.println(p.toString());
             System.out.println("1 - Mover Carta");
@@ -86,7 +82,31 @@ public class Main {
     }
 
     private static void moverCarta() {
+        System.out.println("Selecione a pilha de origem "
+                + "(0 para selecionar a pilha de descarte)");
+        int origem = scan.nextInt();
         
+        System.out.println("Selecione a pilha de destino");
+        int destino = scan.nextInt();
+        
+        if (origem > 4) {
+            System.out.println("Selecione a carta a mover");
+            int carta = scan.nextInt();
+
+            try {
+                if (!p.moverCarta(origem, destino, carta))
+                    System.out.println("NAO PODE MOVER A CARTA!!!");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            try {
+                if (!p.moverCarta(origem, destino))
+                    System.out.println("NAO PODE MOVER A CARTA!!!");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
     
 }
