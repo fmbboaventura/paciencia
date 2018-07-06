@@ -4,7 +4,7 @@ public class VerificadorVazioFundacao extends Pilha.Verificador{
 
     /**
      * Verifica a carta2 pode ser colocada no topo da carta1
-     * Uma fundação vazia só aceita reis de qualquer naipe.
+     * Uma fundação vazia só aceita ases de qualquer naipe.
      * Qualquer outra carta retorna false.
      *
      * @param carta1

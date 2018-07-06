@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package paciencia.model.baralho;
 
 /**
+ * Representação de uma carata.
  *
- * @author aluno
+ * @author Filipe Boaventura
  */
 public class Carta implements Comparable {
     
@@ -38,6 +34,12 @@ public class Carta implements Comparable {
         this.viradaParaCima = viradaParaCima;
     }
     
+    /**
+     * Retora true se esta carta tiver a mesma cor que
+     * a carta passador por argumento
+     * @param c - A outra carta
+     * @return - se as cartas tem a mesma cor
+     */
     public boolean compararCor(Carta c) {
         return this.naipe.ehVermelho() == c.naipe.ehVermelho();
     }
@@ -111,6 +113,10 @@ public class Carta implements Comparable {
             return res;
         }
         
+        /**
+         * Retorna o próximo naipe em sequencia deste naipe.
+         * @return
+         */
         public Naipe proximo() {
             return this.ordinal() < Naipe.values().length - 1
                 ? Naipe.values()[this.ordinal() + 1]

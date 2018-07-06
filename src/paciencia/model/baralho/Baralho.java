@@ -12,7 +12,9 @@ import java.util.List;
 import paciencia.model.baralho.Carta.Naipe;
 
 /**
- *
+ * Classe responsável por criar e fornecer acesso
+ * às cartas. As castas são criadas viradas para 
+ * baixo por padrão.
  * @author aluno
  */
 public class Baralho {

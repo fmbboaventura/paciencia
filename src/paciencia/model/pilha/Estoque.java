@@ -11,7 +11,9 @@ import paciencia.model.baralho.Baralho;
 import paciencia.model.baralho.Carta;
 
 /**
- *
+ * Classe responsável por implementar o comportamento da
+ * pilha de estoque e descarte.
+ * 
  * @author Filipe Boaventura
  */
 public class Estoque {
@@ -34,6 +36,9 @@ public class Estoque {
         }
     }
     
+    /**
+     * Remove uma carta do estoque e adciona no descarte.
+     */
     public void virarCarta() {
         for (int i = 0; i < this.cartasAVirar; i++) {
             Carta pop = this.estoque.pop();
@@ -42,6 +47,10 @@ public class Estoque {
         }
     }
     
+    /**
+     * Remove todas as cartas do descarte, inserindo-as
+     * na pilha do estoque.
+     */
     public void reempilhar() {
         while(!this.descarte.isEmpty()){
             Carta pop = this.descarte.pop();
@@ -50,10 +59,18 @@ public class Estoque {
         }
     }
     
+    /**
+     * Remove uma carta da pilha de descarte.
+     * @return - a carta removida.
+     */
     public Carta getCarta() {
         return this.descarte.pop();
     }
     
+    /**
+     * Retorna, sem remover, a carta no topo da pilha de descarte
+     * @return
+     */
     public Carta peek() {
         return this.descarte.peek();
     }
@@ -88,6 +105,4 @@ public class Estoque {
     public boolean descarteVazio() {
         return this.descarte.isEmpty();
     }
-    
-    // TODO: MÉTODO PARA VISUALIZAR AS CARTAS NO TOPO
 }
