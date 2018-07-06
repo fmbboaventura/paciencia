@@ -34,9 +34,8 @@ public class Main {
             System.out.println("3 - Sair");
             
             opcao = scan.nextInt();
-        } while (opcao < 1 || opcao > 3);
-        
-        switch (opcao) {
+            
+            switch (opcao) {
                 case 1: 
                     p = new Paciencia(1);
                     iniciarJogo();
@@ -49,31 +48,36 @@ public class Main {
                     sair();
                     break;
             }
+        } while (true);
     }
 
     private static void iniciarJogo() {
         int opcao;
+        boolean fimDeJogo = false;
         do {
             System.out.println(p.toString());
             System.out.println("1 - Mover Carta");
             System.out.println(
                     (p.estoqueVazio())? 
-                    "1 - Reempilhar Estoque" :
+                    "2 - Reempilhar Estoque" :
                     "2 - Virar Carta do Estoque"
             );
             System.out.println("3 - Sair");
+            System.out.println("4 - Reiniciar");
             
             opcao = scan.nextInt();
             switch (opcao) {
-                case 1: moverCarta(); break;
+                case 1: fimDeJogo = moverCarta(); break;
                 case 2: 
                     if (p.estoqueVazio()) 
                         p.reempilharEstoque(); 
                     else p.virarCarta(); break;
                 case 3: sair(); break;
+                case 4: if (reiniciar()) return; break;
                 default: System.out.println("Opcao Invalida!!"); break;
             }
-        } while (true);
+        } while (!fimDeJogo);
+        System.out.println("Parabéns! Vc ganhou!!");
     }
 
     private static void sair() {
@@ -81,7 +85,7 @@ public class Main {
         System.exit(0);
     }
 
-    private static void moverCarta() {
+    private static boolean moverCarta() {
         System.out.println("Selecione a pilha de origem "
                 + "(0 para selecionar a pilha de descarte)");
         int origem = scan.nextInt();
@@ -96,17 +100,29 @@ public class Main {
             try {
                 if (!p.moverCarta(origem, destino, carta))
                     System.out.println("NAO PODE MOVER A CARTA!!!");
+                return p.fimDeJogo();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
+                return false;
             }
         } else {
             try {
                 if (!p.moverCarta(origem, destino))
                     System.out.println("NAO PODE MOVER A CARTA!!!");
+                return p.fimDeJogo();
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
+                return false;
             }
         }
+    }
+    
+    private static boolean reiniciar() {
+        int opcao;
+        
+        System.out.println("Reiniciar? (1 - sim, 0 - não)");
+        opcao = scan.nextInt();
+        return opcao == 1;
     }
     
 }

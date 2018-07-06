@@ -120,4 +120,12 @@ public class Paciencia {
     boolean moverCarta(int origem, int destino) {
         return this.moverCarta(origem, destino, 0);
     }
+    
+    public boolean fimDeJogo() {
+        for (int i = 0; i < 4; i++) {
+            if (this.pilhas.get(i).tamanho() != 13) return false;
+        }
+        
+        return true;
+    }
 }
